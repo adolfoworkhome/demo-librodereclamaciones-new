@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Reclamaciones - MAVEGSA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importación de Nunito según requerimiento -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Nunito', sans-serif; 
+            background-color: #ffffff; 
+            color: #4b5563; 
+        }
+        .mavegsa-input {
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+            color: #374151;
+            background-color: #fff;
+        }
+        .mavegsa-input:focus {
+            border-color: #0089cf;
+        }
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a3a5a;
+            text-align: center;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+        }
+        .btn-primary {
+            background-color: #0089cf;
+            color: white;
+            border-radius: 50px;
+            padding: 14px 40px;
+            font-weight: 700;
+            transition: all 0.3s;
+            text-transform: none;
+        }
+        .btn-primary:hover {
+            background-color: #00669b;
+            transform: translateY(-1px);
+        }
+        .label-mavegsa {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #444;
+        }
+        .legal-text-top {
+            color: #666;
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+        }
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .main-title {
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;   
+            height: 4px;    
+            background-color: #0089cf;
+            border-radius: 2px;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: block;
+        }
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .file-custom-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 1rem;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+        .file-input-wrapper:hover .file-custom-btn {
+            border-color: #0089cf;
+            color: #0089cf;
+            background-color: #f0f9ff;
+        }
+
+        /* Estilos específicos para la nueva sección legal */
+        .legal-box-footer {
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+            margin-top: 3rem;
+        }
+        .legal-definitions {
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        .legal-definitions strong {
+            color: #000;
+        }
+        .legal-definitions .number {
+            color: #b91c1c; /* Rojo como en la imagen */
+            font-weight: 800;
+            margin-right: 4px;
+        }
+        .legal-check-text {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1f2937;
+            line-height: 1.4;
+        }
+        .info-asterisk {
+            font-size: 0.75rem;
+            color: #000;
+            line-height: 1.3;
+        }
+        .info-asterisk strong {
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <span class="text-lg">🏠</span>
+            <span>&gt;</span>
+            <span>Libro de reclamaciones</span>
+        </nav>
+
+        <!-- Título Principal -->
+        <div class="title-container mb-10 w-full">
+            <div class="main-title">
+                <h1 class="text-4xl font-extrabold text-[#1a3a5a]">
+                    Libro de reclamaciones
+                </h1>
+            </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+            <!-- Texto Legal Superior -->
+            <div class="legal-text-top">
+                Conforme a lo establecido en el código de la Protección y Defensa del consumidor contamos con un Libro de Reclamaciones a tu disposición para que puedas registrar tu queja o reclamo acerca de algún pedido o transacción realizada.
+            </div>
+
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-[#1a3a5a]">Hoja de reclamación</h2>
+                <p class="text-sm text-gray-400 mt-1">N° Correlativo: 0000001</p>
+            </div>
+
+            <form id="claimForm">
+                <!-- CABECERA CON LOCALES -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div>
+                        <label class="label-mavegsa">Identificación del local*</label>
+                        <select class="mavegsa-input" required>
+                            <option value="" disabled selected>Seleccione un local</option>
+                            <option value="SURQUILLO">SURQUILLO Av. República de Panamá 5255</option>
+                            <option value="BARRIO MEDICO">BARRIO MEDICO Av. República de Panamá 5519</option>
+                            <option value="SAN MIGUEL">SAN MIGUEL Av. Elmer Faucett 369</option>
+                            <option value="VILLA MARIA DEL TRIUNFO">VILLA MARIA DEL TRIUNFO Av. Prolongación Pachacútec 5123</option>
+                            <option value="LOS OLIVOS">LOS OLIVOS Av. Alfredo Mendiola 6345</option>
+                            <option value="ATE VITARTE">ATE VITARTE Av. Nicolás Ayllón 3348</option>
+                            <option value="SAN JUAN DE MIRAFLORES">SAN JUAN DE MIRAFLORES Av. Tomás Guzman 311</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Fecha del Reclamo*</label>
+                        <input type="date" id="currentDate" required class="mavegsa-input">
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 1 -->
+                <h3 class="section-header">Identificación del Consumidor Reclamante</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-1">
+                        <label class="label-mavegsa">Nombre completo*</label>
+                        <input type="text" required class="mavegsa-input">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="label-mavegsa">Dirección de domicilio*</label>
+                        <input type="text" required class="mavegsa-input">
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Documento Identidad*</label>
+                        <select class="mavegsa-input">
+                            <option>DNI</option>
+                            <option>C.E.</option>
+                            <option>Pasaporte</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">N° de Documento*</label>
+                        <input type="text" required class="mavegsa-input">
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Teléfono / Celular*</label>
+                        <input type="tel" required class="mavegsa-input">
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Correo electrónico*</label>
+                        <input type="email" required class="mavegsa-input">
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 2 -->
+                <h3 class="section-header">Identificación del Bien Contratado</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="label-mavegsa">Tipo de Bien*</label>
+                        <div class="flex gap-8 mt-2">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="bien" value="producto" checked class="w-4 h-4 text-[#0089cf]">
+                                <span class="text-sm">Producto</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="bien" value="servicio" class="w-4 h-4 text-[#0089cf]">
+                                <span class="text-sm">Servicio</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Monto Reclamado (S/)*</label>
+                        <input type="number" step="0.01" placeholder="0.00" class="mavegsa-input">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="label-mavegsa">Descripción del producto o servicio</label>
+                        <textarea rows="2" class="mavegsa-input" placeholder="Detalle el producto o servicio adquirido"></textarea>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 3 -->
+                <h3 class="section-header">Detalle de la Reclamación</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label class="label-mavegsa">Tipo de incidencia*</label>
+                        <div class="flex gap-10 mt-2">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="incidencia" value="reclamo" checked class="w-4 h-4 text-[#0089cf]">
+                                <span class="text-sm font-bold uppercase tracking-wide">Reclamo</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="incidencia" value="queja" class="w-4 h-4 text-[#0089cf]">
+                                <span class="text-sm font-bold uppercase tracking-wide">Queja</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Detalle de la reclamación o queja*</label>
+                        <textarea rows="4" required class="mavegsa-input" placeholder="Explique lo ocurrido"></textarea>
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Pedido / Solicitud*</label>
+                        <textarea rows="2" required class="mavegsa-input" placeholder="Indique la solución esperada"></textarea>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN LEGAL FINAL (Adaptada de la imagen) -->
+                <div class="legal-box-footer">
+                    <!-- Definiciones -->
+                    <div class="legal-definitions">
+                        <p><span class="number">(1)</span> <strong>Reclamación:</strong> <em>Desacuerdo relacionado con productos y / o servicios.</em></p>
+                        <p><span class="number">(2)</span> <strong>Queja:</strong> <em>Desacuerdo no relacionado con productos y / o servicios; o, malestar o insatisfacción con la atención al público.</em></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                        <!-- Checkboxes de declaración -->
+                        <div class="space-y-6">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#0089cf]">
+                                <span class="legal-check-text">
+                                    Declaro que soy el dueño del servicio y acepto el contenido de este formulario al declarar bajo Declaración Jurada la veracidad de los hechos descritos.
+                                </span>
+                            </label>
+
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#0089cf]">
+                                <span class="legal-check-text">
+                                    He leído y acepto la Política de privacidad y seguridad y la Política de cookies.
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Bloque de información con asteriscos -->
+                        <div class="space-y-3 bg-gray-50 p-4 rounded-xl">
+                            <p class="info-asterisk">
+                                <strong>*</strong> La formulación del reclamo no excluye el recurso a otros medios de resolución de controversias ni es un requisito previo para presentar una denuncia ante el Indecopi.
+                            </p>
+                            <p class="info-asterisk">
+                                <strong>*</strong> El proveedor debe responder a la reclamación en un plazo no superior a quince (15) días naturales, pudiendo ampliar el plazo hasta quince días.
+                            </p>
+                            <p class="info-asterisk">
+                                <strong>*</strong> Con la firma de este documento, el cliente autoriza a ser contactado después de la tramitación de la reclamación para evaluar la calidad y satisfacción del proceso de atención de reclamaciones.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12 mb-16">
+                    <button type="submit" class="btn-primary w-full md:w-auto shadow-lg shadow-blue-100">
+                        Enviar reclamación
+                    </button>
+                    <button type="button" onclick="window.print()" class="text-gray-400 font-bold hover:text-[#1a3a5a] transition text-sm">
+                        Imprimir formulario
+                    </button>
+                </div>
+            </form>
+
+            <div class="advertencia">
+                <p style="text-align: center;">Este formato es <b style="color: red;">solo un demo</b> de las correcciones del libro de reclamaciones, se necesita la aprobación del demo para aplicar los cambios en la sección del sitio.</p>
+            </div>
+
+            <div class="text-center text-[10px] text-gray-300 uppercase tracking-widest pt-8 border-t">
+                Mavegsa Perú S.A.C. - Los verdaderos especialistas
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('currentDate').valueAsDate = new Date();
+
+        document.getElementById('claimForm').onsubmit = (e) => {
+            e.preventDefault();
+            const modal = document.createElement('div');
+            modal.style = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;";
+            modal.innerHTML = `
+                <div style="background:white;padding:3rem;border-radius:24px;text-align:center;max-width:400px;box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                    <div style="font-size:3.5rem;margin-bottom:1rem;">✅</div>
+                    <h3 style="font-weight:800;color:#1a3a5a;font-size:1.5rem;margin-bottom:1rem;">¡Enviado con éxito!</h3>
+                    <p style="color:#666;margin-bottom:2rem;line-height:1.5;">Su hoja de reclamación ha sido registrada. Le enviaremos una copia detallada a su correo electrónico en breve.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background:#0089cf;color:white;padding:12px 40px;border-radius:50px;font-weight:700;cursor:pointer;">Entendido</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        };
+    </script>
+</body>
+</html>
