@@ -117,6 +117,7 @@
             padding: 1rem;
             color: #6b7280;
             transition: all 0.2s;
+            background-color: #fafafa;
         }
         .file-input-wrapper:hover .file-custom-btn {
             border-color: #0089cf;
@@ -124,7 +125,7 @@
             background-color: #f0f9ff;
         }
 
-        /* Estilos específicos para la nueva sección legal */
+        /* Estilos específicos para la sección legal footer */
         .legal-box-footer {
             border-top: 1px solid #eee;
             padding-top: 2rem;
@@ -140,7 +141,7 @@
             color: #000;
         }
         .legal-definitions .number {
-            color: #b91c1c; /* Rojo como en la imagen */
+            color: #b91c1c; 
             font-weight: 800;
             margin-right: 4px;
         }
@@ -186,32 +187,12 @@
             </div>
 
             <div class="text-center mb-12">
-                <h2 class="text-2xl font-bold text-[#1a3a5a]">Hoja de reclamación</h2>
-                <p class="text-sm text-gray-400 mt-1">N° Correlativo: 0000001</p>
+                <!--h2 class="text-2xl font-bold text-[#1a3a5a]">Hoja de reclamación</h2-->
+                <!--p class="text-sm text-gray-400 mt-1">N° Correlativo: 0000001</p-->
             </div>
 
             <form id="claimForm">
                 <!-- CABECERA CON LOCALES -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                    <div>
-                        <label class="label-mavegsa">Identificación del local*</label>
-                        <select class="mavegsa-input" required>
-                            <option value="" disabled selected>Seleccione un local</option>
-                            <option value="SURQUILLO">SURQUILLO Av. República de Panamá 5255</option>
-                            <option value="BARRIO MEDICO">BARRIO MEDICO Av. República de Panamá 5519</option>
-                            <option value="SAN MIGUEL">SAN MIGUEL Av. Elmer Faucett 369</option>
-                            <option value="VILLA MARIA DEL TRIUNFO">VILLA MARIA DEL TRIUNFO Av. Prolongación Pachacútec 5123</option>
-                            <option value="LOS OLIVOS">LOS OLIVOS Av. Alfredo Mendiola 6345</option>
-                            <option value="ATE VITARTE">ATE VITARTE Av. Nicolás Ayllón 3348</option>
-                            <option value="SAN JUAN DE MIRAFLORES">SAN JUAN DE MIRAFLORES Av. Tomás Guzman 311</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="label-mavegsa">Fecha del Reclamo*</label>
-                        <input type="date" id="currentDate" required class="mavegsa-input">
-                    </div>
-                </div>
-
                 <!-- SECCIÓN 1 -->
                 <h3 class="section-header">Identificación del Consumidor Reclamante</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -243,6 +224,28 @@
                         <label class="label-mavegsa">Correo electrónico*</label>
                         <input type="email" required class="mavegsa-input">
                     </div>
+                </div><br>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+
+                    <div>
+                        <label class="label-mavegsa">Identificación del local*</label>
+                        <select class="mavegsa-input" required>
+                            <option value="" disabled selected>Seleccione un local</option>
+                            <option value="SURQUILLO">SURQUILLO Av. República de Panamá 5255</option>
+                            <option value="BARRIO MEDICO">BARRIO MEDICO Av. República de Panamá 5519</option>
+                            <option value="SAN MIGUEL">SAN MIGUEL Av. Elmer Faucett 369</option>
+                            <option value="VILLA MARIA DEL TRIUNFO">VILLA MARIA DEL TRIUNFO Av. Prolongación Pachacútec 5123</option>
+                            <option value="LOS OLIVOS">LOS OLIVOS Av. Alfredo Mendiola 6345</option>
+                            <option value="ATE VITARTE">ATE VITARTE Av. Nicolás Ayllón 3348</option>
+                            <option value="SAN JUAN DE MIRAFLORES">SAN JUAN DE MIRAFLORES Av. Tomás Guzman 311</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Fecha del Reclamo*</label>
+                        <input type="date" id="currentDate" required class="mavegsa-input">
+                    </div>
+
                 </div>
 
                 <!-- SECCIÓN 2 -->
@@ -268,6 +271,19 @@
                     <div class="md:col-span-2">
                         <label class="label-mavegsa">Descripción del producto o servicio</label>
                         <textarea rows="2" class="mavegsa-input" placeholder="Detalle el producto o servicio adquirido"></textarea>
+                    </div>
+                    <!-- REINCORPORACIÓN: ADJUNTAR ARCHIVO -->
+                    <div class="md:col-span-2">
+                        <label class="label-mavegsa">Adjuntar comprobante de pago o sustento (Opcional)</label>
+                        <div class="file-input-wrapper">
+                            <div class="file-custom-btn" id="fileBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                </svg>
+                                <span id="fileNameDisplay">Haga clic aquí para subir su recibo o archivo</span>
+                            </div>
+                            <input type="file" id="receiptFile" accept=".pdf,.jpg,.png,.jpeg">
+                        </div>
                     </div>
                 </div>
 
@@ -297,16 +313,14 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN LEGAL FINAL (Adaptada de la imagen) -->
+                <!-- SECCIÓN LEGAL FINAL -->
                 <div class="legal-box-footer">
-                    <!-- Definiciones -->
                     <div class="legal-definitions">
                         <p><span class="number">(1)</span> <strong>Reclamación:</strong> <em>Desacuerdo relacionado con productos y / o servicios.</em></p>
                         <p><span class="number">(2)</span> <strong>Queja:</strong> <em>Desacuerdo no relacionado con productos y / o servicios; o, malestar o insatisfacción con la atención al público.</em></p>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                        <!-- Checkboxes de declaración -->
                         <div class="space-y-6">
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#0089cf]">
@@ -323,7 +337,6 @@
                             </label>
                         </div>
 
-                        <!-- Bloque de información con asteriscos -->
                         <div class="space-y-3 bg-gray-50 p-4 rounded-xl">
                             <p class="info-asterisk">
                                 <strong>*</strong> La formulación del reclamo no excluye el recurso a otros medios de resolución de controversias ni es un requisito previo para presentar una denuncia ante el Indecopi.
@@ -349,10 +362,6 @@
                 </div>
             </form>
 
-            <div class="advertencia">
-                <p style="text-align: center;">Este formato es <b style="color: red;">solo un demo</b> de las correcciones del libro de reclamaciones, se necesita la aprobación del demo para aplicar los cambios en la sección del sitio.</p>
-            </div>
-
             <div class="text-center text-[10px] text-gray-300 uppercase tracking-widest pt-8 border-t">
                 Mavegsa Perú S.A.C. - Los verdaderos especialistas
             </div>
@@ -361,6 +370,12 @@
 
     <script>
         document.getElementById('currentDate').valueAsDate = new Date();
+
+        // Script para mostrar el nombre del archivo seleccionado
+        document.getElementById('receiptFile').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : "Haga clic aquí para subir su recibo o archivo";
+            document.getElementById('fileNameDisplay').textContent = fileName;
+        });
 
         document.getElementById('claimForm').onsubmit = (e) => {
             e.preventDefault();
