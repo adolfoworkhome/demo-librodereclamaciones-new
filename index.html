@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libro de Reclamaciones - MAVEGSA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Importación de Nunito según requerimiento -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { 
@@ -41,7 +40,6 @@
             padding: 14px 40px;
             font-weight: 700;
             transition: all 0.3s;
-            text-transform: none;
         }
         .btn-primary:hover {
             background-color: #00669b;
@@ -71,16 +69,21 @@
             margin-bottom: 2rem;
         }
         
+        /* Título con línea centrada según image_15dbdc.png */
         .title-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            margin-bottom: 2.5rem;
         }
         .main-title {
             position: relative;
             padding-bottom: 15px;
             display: inline-block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1a3a5a;
         }
         .main-title::after {
             content: '';
@@ -88,7 +91,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;   
+            width: 100px;   
             height: 4px;    
             background-color: #0089cf;
             border-radius: 2px;
@@ -116,40 +119,18 @@
             border-radius: 12px;
             padding: 1rem;
             color: #6b7280;
-            transition: all 0.2s;
             background-color: #fafafa;
         }
-        .file-input-wrapper:hover .file-custom-btn {
-            border-color: #0089cf;
-            color: #0089cf;
-            background-color: #f0f9ff;
-        }
 
-        /* Estilos específicos para la sección legal footer */
         .legal-box-footer {
             border-top: 1px solid #eee;
             padding-top: 2rem;
             margin-top: 3rem;
         }
-        .legal-definitions {
-            font-size: 0.85rem;
-            color: #4b5563;
-            margin-bottom: 2rem;
-            line-height: 1.5;
-        }
-        .legal-definitions strong {
-            color: #000;
-        }
         .legal-definitions .number {
             color: #b91c1c; 
             font-weight: 800;
             margin-right: 4px;
-        }
-        .legal-check-text {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #1f2937;
-            line-height: 1.4;
         }
         .info-asterisk {
             font-size: 0.75rem;
@@ -171,13 +152,11 @@
             <span>Libro de reclamaciones</span>
         </nav>
 
-        <!-- Título Principal -->
-        <div class="title-container mb-10 w-full">
-            <div class="main-title">
-                <h1 class="text-4xl font-extrabold text-[#1a3a5a]">
-                    Libro de reclamaciones
-                </h1>
-            </div>
+        <!-- Título Principal (Línea centrada) -->
+        <div class="title-container">
+            <h1 class="main-title">
+                Libro de reclamaciones
+            </h1>
         </div>
 
         <div class="max-w-5xl mx-auto">
@@ -186,16 +165,16 @@
                 Conforme a lo establecido en el código de la Protección y Defensa del consumidor contamos con un Libro de Reclamaciones a tu disposición para que puedas registrar tu queja o reclamo acerca de algún pedido o transacción realizada.
             </div>
 
-            <div class="text-center mb-12">
-                <!--h2 class="text-2xl font-bold text-[#1a3a5a]">Hoja de reclamación</h2-->
-                <!--p class="text-sm text-gray-400 mt-1">N° Correlativo: 0000001</p-->
-            </div>
+            <!--div class="text-center mb-12">
+                <h2 class="text-2xl font-bold text-[#1a3a5a]">Hoja de reclamación</h2>
+                <p class="text-sm text-gray-400 mt-1">N° Correlativo: 001-2024-00001</p>
+            </div-->
 
             <form id="claimForm">
-                <!-- CABECERA CON LOCALES -->
-                <!-- SECCIÓN 1 -->
+                
+                <!-- SECCIÓN 1: Identificación del Consumidor Reclamante -->
                 <h3 class="section-header">Identificación del Consumidor Reclamante</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                     <div class="md:col-span-1">
                         <label class="label-mavegsa">Nombre completo*</label>
                         <input type="text" required class="mavegsa-input">
@@ -224,14 +203,14 @@
                         <label class="label-mavegsa">Correo electrónico*</label>
                         <input type="email" required class="mavegsa-input">
                     </div>
-                </div><br>
+                </div>
 
+                <!-- SECCIÓN TIENDAS (Ubicada según flujo lógico tras datos personales) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-
                     <div>
                         <label class="label-mavegsa">Identificación del local*</label>
                         <select class="mavegsa-input" required>
-                            <option value="" disabled selected>Seleccione un local</option>
+                            <option value="" disabled selected>SURQUILLO Av. República de Panamá 5255</option>
                             <option value="SURQUILLO">SURQUILLO Av. República de Panamá 5255</option>
                             <option value="BARRIO MEDICO">BARRIO MEDICO Av. República de Panamá 5519</option>
                             <option value="SAN MIGUEL">SAN MIGUEL Av. Elmer Faucett 369</option>
@@ -245,12 +224,11 @@
                         <label class="label-mavegsa">Fecha del Reclamo*</label>
                         <input type="date" id="currentDate" required class="mavegsa-input">
                     </div>
-
                 </div>
 
-                <!-- SECCIÓN 2 -->
+                <!-- SECCIÓN 2: Identificación del Bien Contratado -->
                 <h3 class="section-header">Identificación del Bien Contratado</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label class="label-mavegsa">Tipo de Bien*</label>
                         <div class="flex gap-8 mt-2">
@@ -268,12 +246,31 @@
                         <label class="label-mavegsa">Monto Reclamado (S/)*</label>
                         <input type="number" step="0.01" placeholder="0.00" class="mavegsa-input">
                     </div>
-                    <div class="md:col-span-2">
+                </div>
+
+                <!-- SECCIÓN: RANGOS DE FECHAS (Según image_65e086.png) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label class="label-mavegsa">Fecha de compra</label>
+                        <input type="date" class="mavegsa-input">
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Fecha de consumo</label>
+                        <input type="date" class="mavegsa-input">
+                    </div>
+                    <div>
+                        <label class="label-mavegsa">Fecha de caducidad</label>
+                        <input type="date" class="mavegsa-input">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div>
                         <label class="label-mavegsa">Descripción del producto o servicio</label>
                         <textarea rows="2" class="mavegsa-input" placeholder="Detalle el producto o servicio adquirido"></textarea>
                     </div>
-                    <!-- REINCORPORACIÓN: ADJUNTAR ARCHIVO -->
-                    <div class="md:col-span-2">
+                    <!-- ADJUNTAR ARCHIVO -->
+                    <div>
                         <label class="label-mavegsa">Adjuntar comprobante de pago o sustento (Opcional)</label>
                         <div class="file-input-wrapper">
                             <div class="file-custom-btn" id="fileBtn">
@@ -287,24 +284,25 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN 3 -->
+                <!-- SECCIÓN 3: Detalle de la Reclamación -->
                 <h3 class="section-header">Detalle de la Reclamación</h3>
                 <div class="space-y-6">
                     <div>
                         <label class="label-mavegsa">Tipo de incidencia*</label>
                         <div class="flex gap-10 mt-2">
                             <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="incidencia" value="reclamo" checked class="w-4 h-4 text-[#0089cf]">
+                                <input type="radio" name="incidencia" value="reclamo" checked onchange="updateIncidenceLabel(this.value)" class="w-4 h-4 text-[#0089cf]">
                                 <span class="text-sm font-bold uppercase tracking-wide">Reclamo</span>
                             </label>
                             <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="incidencia" value="queja" class="w-4 h-4 text-[#0089cf]">
+                                <input type="radio" name="incidencia" value="queja" onchange="updateIncidenceLabel(this.value)" class="w-4 h-4 text-[#0089cf]">
                                 <span class="text-sm font-bold uppercase tracking-wide">Queja</span>
                             </label>
                         </div>
                     </div>
                     <div>
-                        <label class="label-mavegsa">Detalle de la reclamación o queja*</label>
+                        <!-- Título dinámico según image_6641fd.png -->
+                        <label class="label-mavegsa" id="incidenceDetailLabel">Detalle de la reclamación*</label>
                         <textarea rows="4" required class="mavegsa-input" placeholder="Explique lo ocurrido"></textarea>
                     </div>
                     <div>
@@ -315,29 +313,29 @@
 
                 <!-- SECCIÓN LEGAL FINAL -->
                 <div class="legal-box-footer">
-                    <div class="legal-definitions">
-                        <p><span class="number">(1)</span> <strong>Reclamación:</strong> <em>Desacuerdo relacionado con productos y / o servicios.</em></p>
-                        <p><span class="number">(2)</span> <strong>Queja:</strong> <em>Desacuerdo no relacionado con productos y / o servicios; o, malestar o insatisfacción con la atención al público.</em></p>
+                    <div class="mb-8">
+                        <p class="text-sm mb-2"><span class="number">(1)</span> <strong>Reclamación:</strong> <span class="italic text-gray-500">Desacuerdo relacionado con productos y / o servicios.</span></p>
+                        <p class="text-sm"><span class="number">(2)</span> <strong>Queja:</strong> <span class="italic text-gray-500">Desacuerdo no relacionado con productos y / o servicios; o, malestar o insatisfacción con la atención al público.</span></p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
                         <div class="space-y-6">
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#0089cf]">
-                                <span class="legal-check-text">
+                                <span class="text-sm font-bold text-gray-800 leading-snug">
                                     Declaro que soy el dueño del servicio y acepto el contenido de este formulario al declarar bajo Declaración Jurada la veracidad de los hechos descritos.
                                 </span>
                             </label>
 
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" required class="mt-1 w-5 h-5 rounded border-gray-300 text-[#0089cf]">
-                                <span class="legal-check-text">
+                                <span class="text-sm font-bold text-gray-800 leading-snug">
                                     He leído y acepto la Política de privacidad y seguridad y la Política de cookies.
                                 </span>
                             </label>
                         </div>
 
-                        <div class="space-y-3 bg-gray-50 p-4 rounded-xl">
+                        <div class="space-y-3 bg-gray-50 p-5 rounded-2xl border border-gray-100">
                             <p class="info-asterisk">
                                 <strong>*</strong> La formulación del reclamo no excluye el recurso a otros medios de resolución de controversias ni es un requisito previo para presentar una denuncia ante el Indecopi.
                             </p>
@@ -351,42 +349,60 @@
                     </div>
                 </div>
 
-                <!-- Botones de Acción -->
+                <!-- Botones -->
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12 mb-16">
                     <button type="submit" class="btn-primary w-full md:w-auto shadow-lg shadow-blue-100">
                         Enviar reclamación
                     </button>
-                    <button type="button" onclick="window.print()" class="text-gray-400 font-bold hover:text-[#1a3a5a] transition text-sm">
+                    <!--button type="button" onclick="window.print()" class="text-gray-400 font-bold hover:text-[#1a3a5a] transition text-sm">
                         Imprimir formulario
-                    </button>
+                    </button-->
+                </div>
+
+                <div class="notas">
+                    <p style="text-align: center;">
+                        Nota: Este es solo un <b style="color: red;">DEMO</b> para el formulario de "Libro de reclamaciones", no esta vinculado ni esta en producción.
+                    </p>
                 </div>
             </form>
 
-            <div class="text-center text-[10px] text-gray-300 uppercase tracking-widest pt-8 border-t">
+            <div class="text-center text-[10px] text-gray-300 uppercase tracking-widest pt-8 border-t mb-10">
                 Mavegsa Perú S.A.C. - Los verdaderos especialistas
             </div>
         </div>
     </div>
 
     <script>
+        // Establecer fecha actual
         document.getElementById('currentDate').valueAsDate = new Date();
 
-        // Script para mostrar el nombre del archivo seleccionado
+        // Actualizar etiqueta de detalle dinámicamente según image_6641fd.png
+        function updateIncidenceLabel(value) {
+            const label = document.getElementById('incidenceDetailLabel');
+            if (value === 'reclamo') {
+                label.textContent = 'Detalle de la reclamación*';
+            } else {
+                label.textContent = 'Detalle de la queja*';
+            }
+        }
+
+        // Manejo de archivo
         document.getElementById('receiptFile').addEventListener('change', function() {
             const fileName = this.files[0] ? this.files[0].name : "Haga clic aquí para subir su recibo o archivo";
             document.getElementById('fileNameDisplay').textContent = fileName;
         });
 
+        // Simulación de envío
         document.getElementById('claimForm').onsubmit = (e) => {
             e.preventDefault();
             const modal = document.createElement('div');
-            modal.style = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;";
+            modal.style = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;backdrop-filter:blur(4px);";
             modal.innerHTML = `
-                <div style="background:white;padding:3rem;border-radius:24px;text-align:center;max-width:400px;box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
-                    <div style="font-size:3.5rem;margin-bottom:1rem;">✅</div>
-                    <h3 style="font-weight:800;color:#1a3a5a;font-size:1.5rem;margin-bottom:1rem;">¡Enviado con éxito!</h3>
-                    <p style="color:#666;margin-bottom:2rem;line-height:1.5;">Su hoja de reclamación ha sido registrada. Le enviaremos una copia detallada a su correo electrónico en breve.</p>
-                    <button onclick="this.parentElement.parentElement.remove()" style="background:#0089cf;color:white;padding:12px 40px;border-radius:50px;font-weight:700;cursor:pointer;">Entendido</button>
+                <div style="background:white;padding:3.5rem;border-radius:30px;text-align:center;max-width:450px;box-shadow: 0 30px 60px -12px rgba(0,0,0,0.3);">
+                    <div style="font-size:4rem;margin-bottom:1.5rem;">✅</div>
+                    <h3 style="font-weight:800;color:#1a3a5a;font-size:1.8rem;margin-bottom:1rem;">¡Recibido!</h3>
+                    <p style="color:#666;margin-bottom:2.5rem;line-height:1.6;">Su hoja de reclamación ha sido registrada. Pronto recibirá noticias nuestras en su correo electrónico.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background:#0089cf;color:white;padding:14px 50px;border-radius:50px;font-weight:800;cursor:pointer;border:none;">Cerrar</button>
                 </div>
             `;
             document.body.appendChild(modal);
